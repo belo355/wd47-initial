@@ -1,0 +1,76 @@
+<meta charset="utf-8" /> 
+<h1>JavaScript Basico</h1>
+<script> 
+
+    'use strict'; 
+
+    var nome = "Edilson";
+    console.log(nome); 
+
+    if(true){
+        var nome2 = 'Ana';  
+    }
+
+    console.log('O valor de nome é : ', nome); 
+    console.log('O valor de nome2 é : ', nome2); //nome2 pode ser acessivel por ser um 'var' fora de uma funcao
+    
+    function mostraIdade(){
+        var idade = 27; 
+        console.log('o valor da "idade" é:', idade); //ok 
+    }
+
+    // variaveis com let possuem escopo forte, ou seja, uma variavel criada em qualquer tipo de bloco 
+    // com o comando let vira um variavel local
+
+    for(let i = 0 ; i <= 10; i++){
+        console.log(i); 
+    }
+    // console.log(i); -- error devido ao escopo forte de let 
+
+    // Diferentes tipos de funcoes 
+    //1 - desclarativas ( com hoisting (elevacao))
+
+    somar(10, 10); 
+    function somar(valor1 , valor2){
+        console.log('Resultado', valor1 + valor2); 
+    }
+
+
+    //2 - Expression 
+    const subtrair = function(valor1, valor2){
+        console.log('Resultado', valor1 - valor2); 
+    }
+
+    subtrair(10, 10)
+
+
+    // Window - Objeto global BOM (Browser Objet Model) > DOM 
+    // tudo associado ao window é global 
+
+    var jogador = 'Lucas';
+    window.jogador === jogador //true
+
+    {
+        function mostrarMensagem(msg){
+            console.log(`Mensagem enviada: ${msg}`); 
+        }
+
+        window.mostrarMensagem = mostrarMensagem; //antes a externalizacao de funcoes era assim 
+    }
+
+
+    //Eventos (Events Handlers x Events Listeners)
+
+    //Handlers somente é recomendado utilizar me projetos pequenos, pois o html entende apenas o primeiro evento importado 
+    //pode causar problema em codigo maiores 
+
+    window.onload = function(){
+        alert('Buscando dados no bd...'); 
+    }
+
+    //solucao: Usar addEventListener 
+    window.addEventListener('load', function(){
+        alert('Enviando e-mails para os clientes .. '); 
+    }); 
+
+</script>

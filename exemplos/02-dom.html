@@ -1,0 +1,53 @@
+<meta charset="utf-8" /> 
+<h1> JavaScript: querySelector e querySelectorAll </h1>
+<style>
+    p {
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        padding: 15px;
+    } 
+
+    .vermelho {
+        background-color: #fff0f0;
+        border-color: red;
+        color: red; 
+    } 
+
+</style>
+
+<p>Paragrafo 1</p>
+<p class="vermelho">Paragrafo 2</p>
+<p>Paragrafo 3</p>
+<p>Paragrafo 4</p>
+<p class="vermelho">Paragrafo 5</p>
+<p class="vermelho">Paragrafo 6</p>
+<p>Paragrafo 7</p>
+<p>Paragrafo 8</p>
+<p>Paragrafo 9</p>
+<p id="p10">Paragrafo 10</p>
+
+<script>
+    const p10 = document.querySelector('#p10'); 
+    p10.innerHTML = 'trocando o <strong>texto</strong> paragrafo10'; // texto html sendo tratado como html 
+    //p10.innerHTML = 'trocando o <strong>texto<strong> paragrafo10' //conteudo literal 
+
+    //atualmente é utilizado querySelector e nao getElementById 
+
+    const vermelhos = document.querySelectorAll('.vermelho'); 
+    
+    // for(let i = 0; i < vermelhos.length; i++) {
+    //     vermelhos[i].textContent = 'trocando valores dos vermelhos'; 
+    // } 
+
+    //for .. of = looping especializados p percoreer obj interaveis (Arrays, Strings, map, set, etc)
+    // for(let vermelho of vermelhos){
+    //     vermelho.textContent = 'trocando valores dos vermelhos'; 
+    // }
+
+    //arrow function 
+    vermelhos.forEach(vermelho => vermelho.textContent = 'trocando valores dos vermelhos'); 
+    
+    // Array.from(vermelhos).push('transformando em array para ter acesso aos metodos de array');
+
+
+</script>
