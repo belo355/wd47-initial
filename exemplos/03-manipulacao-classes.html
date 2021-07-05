@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <meta charset="utf-8" />
 <h1> JavaScript: Manipulacao de classes </h1>
 
@@ -31,9 +33,14 @@
     const btn4 = document.querySelector('#btn4');
     const btn5 = document.querySelector('#btn5');
 
-    // btn1.onclick = () => btn1.classList.add('vermelho');
-    // btn1.onclick = () => btn1.classList.remove('vermelho'); //TODO: entender pq nao funciona 
     btn1.onclick = () => btn1.classList.toggle('vermelho'); 
+    // btn1.addEventListener('click', function(){
+    //     if(!btn1.classList.contains('vermelho')){
+    //         btn1.classList.add('vermelho');
+    //     }else{
+    //         btn1.classList.remove('vermelho');
+    //     }
+    // }); 
 
     btn4.onclick = () => {
         let temClassVermelho = btn4.classList.contains('vermelho');
@@ -48,3 +55,4 @@
     btn5.onclick = () => btn5.classList.replace('vermelho', 'verde');
 
 </script>
+</html>

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <meta charset="utf-8" />
 <h1> JavaScript: Formulario </h1>
 
@@ -52,6 +54,14 @@
         padding: 15px 35px;
     }
 
+    .button-recarregar {
+        border-radius: 5px;
+        border: none;
+        background: rgb(74, 71, 221);
+        color: #fff;
+        padding: 15px 35px;
+    }
+
     .escondida {
         display: none;
     }
@@ -76,6 +86,7 @@
         <input type="text">
     </label>
     <button>Enviar</button>
+    <button class="button-recarregar">Recaregar</button>
 </form>
 
 <script>
@@ -86,19 +97,17 @@
 
     form.onsubmit = (e) => {
         e.preventDefault();
-        const camposObrigatorios = form.querySelectorAll('.obrigatorio');
-
+        const riqueredFields = form.querySelectorAll('.obrigatorio');
         const mensagensErro = []; 
-        for(let campo of camposObrigatorios){
-            if(!campo.value.trim()){
-                campo.classList.add('destacar'); 
-                // campo.placeholder = campo.dataset.mensagem; //TODO: regularizar e entender dataset 
-                let mensagem = campo.dataset.mensagem
-                mensagensErro.push(mensagem); 
+        
+        for(let field of riqueredFields){
+            if(!field.value.trim()){
+                field.classList.add('destacar'); 
+                mensagensErro.push(field.dataset.mensagem); 
                 console.log(mensagensErro); 
             }
             else{
-                campo.classList.remove('destacar'); 
+                field.classList.remove('destacar'); 
             }
         }
 
@@ -113,5 +122,12 @@
         form.prepend(divMsg);
     };
 
+    const btnRecarregar = document.querySelector('.button-recarregar'); 
+    btnRecarregar.onclick = (e) => {
+        e.preventDefault(); 
+        form.submit(); 
+    }
+
 
 </script>
+</html> 
