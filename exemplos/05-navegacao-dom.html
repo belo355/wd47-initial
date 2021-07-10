@@ -85,24 +85,22 @@
     table.addEventListener("click", function (e) {
       if (e.target.classList.contains("excluir")) {
         e.target.closest("tr").remove(); //busca a prox tr ancestral
-
       } else if (e.target.classList.contains("editar")) {
         let isConteudoEditavel = false;
-        const btnEditar = event.target; 
+        const btnEditar = event.target;
 
         if (btnEditar.textContent.trim() == "Editar") {
-
-            btnEditar.textContent = "Salvar Edição";
-            isConteudoEditavel = true;s
+          btnEditar.textContent = "Salvar Edição";
+          isConteudoEditavel = true;
         } else {
           btnEditar.textContent = "Editar";
         }
 
-        let	tdTio =	btnEditar.parentElement.previousElementSibling;
-        while(tdTio	!= null){
-            tdTio.classList.toggle('editavel');
-		    tdTio.contentEditable=isConteudoEditavel;
-            tdTio=tdTio.previousElementSibling;
+        let tdTio = btnEditar.parentElement.previousElementSibling;
+        while (tdTio != null) {
+          tdTio.classList.toggle("editavel");
+          tdTio.contentEditable = isConteudoEditavel;
+          tdTio = tdTio.previousElementSibling;
         }
       }
     });

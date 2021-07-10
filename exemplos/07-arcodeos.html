@@ -1,0 +1,92 @@
+<meta charset="utf-8"> 
+<h1> Arcodeões</h1>
+
+<div class="acordeoes">
+  <div class="acordeao">
+    <h4>Acordeão 1</h4>
+    <div class="conteudo">
+      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, nostrum voluptatibus rem voluptatem alias saepe error, cumque debitis, beatae non sunt? Labore, magni ducimus blanditiis possimus eos soluta sunt accusamus.</div>
+    </div>
+  </div>
+
+  <div class="acordeao">
+    <h4>Acordeão 2</h4>
+    <div class="conteudo">
+      <div>Quos, tempore ab numquam, voluptatum omnis natus recusandae a error, fugit architecto debitis animi suscipit mollitia labore rerum? Rerum, harum autem quos laudantium et omnis quidem consequatur at similique quisquam?</div>
+    </div>
+  </div>
+
+  <div class="acordeao">
+    <h4>Acordeão 3</h4>
+    <div class="conteudo">
+      <div>Beatae ratione unde veritatis velit at nam aspernatur laborum totam quasi culpa, iure perferendis laudantium? Aut, cum amet animi explicabo nisi maiores officia a obcaecati omnis vero libero quaerat est.</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 16px;
+  }
+
+  .acordeoes {
+      width: 400px;
+  }
+
+  .acordeao {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 30px;
+  }
+
+  h4 {
+      cursor: pointer;
+      background-color: #eee;
+      margin: 0;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+  }
+
+  .conteudo {
+      height: 0;
+      overflow: hidden;
+  }
+
+  .conteudo div {
+      padding: 20px;
+  }
+</style>
+
+<script>
+
+  const acordeoes = document.querySelector('.acordeoes'); 
+
+  const opcoes = {
+    duration: 600, 
+    fill: 'forwards'
+  }
+
+  acordeoes.addEventListener('click', function(e){
+    if(e.target.tagName === 'H4'){
+      const divConteudo = e.target.nextElementSibling; 
+      let animationHeight = divConteudo.firstElementChild.offsetHeight; 
+
+      if(divConteudo.offsetHeight > 0 ){
+        animationHeight = 0 
+      }
+
+      divConteudo.animate({height: animationHeight + 'px'}, opcoes); 
+
+      const acordeaoAtual = divConteudo.parentElement; 
+      for(let acordeao of acordeoes.children){
+        if (acordeao != acordeaoAtual){
+          acordeao.lastElementChild.animate({ height: '0px'}, opcoes); 
+        }
+      }
+
+    }
+  }); 
+
+</script>
