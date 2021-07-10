@@ -67,7 +67,7 @@
           <tr>
             <th>Nome</th>
             <th>Telefone</th>
-            <th></th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody id="tabelaContatos">
@@ -122,9 +122,10 @@
       };
 
       //FAZER FUNCIONAR EXCLUSAO - TODO pag 92 + opcional 
-    //   table.onclick = e => {
-    //       let classDenger = e.target.classList.contais('btn-danger')
-    //   } 
+      table.onclick = e => {
+          let classDenger = e.target.classList.contains('btn-danger'); 
+          e.target.closest("tr").remove(); 
+      } 
 
     </script>
   </body>
