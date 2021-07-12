@@ -15,43 +15,28 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.2.0/vanilla-masker.min.js"></script>
-    <script>
-      window.onload = () =>
-        VMasker(inputTelefone).maskPattern("(99) 9999-9999");
-    </script>
   </head>
   <body>
     <div class="jumbotron">
-      <h1 class="display-4">Minha Agenda</h1>
-      <p class="lead">Confira abaixo sua lista de contatos cadastrados.</p>
+      <h1 class="display-4">TODO-list</h1>
+      <p class="lead">Confira abaixo sua lista tasks.</p>
     </div>
     <div class="container">
       <div class="card mb-3 p-3 container">
         <!-- Formulário de Cadastro -->
         <form id="formCadastro" class="row">
           <div class="form-group col-md-5">
-            <label>Nome:</label>
+            <label>Task:</label>
             <input
               type="text"
-              id="inputNome"
+              id="inputTask"
               class="form-control"
               value=""
-              data-msg="Nome é obrigatório"
-              placeholder="Digite o nome do contato aqui..."
+              data-msg="Taks é obrigatório"
+              placeholder="Digite a descricao da tarega aqui.."
             />
           </div>
-          <div class="form-group col-md-5">
-            <label>Telefone:</label>
-            <input
-              type="text"
-              id="inputTelefone"
-              class="form-control"
-              value=""
-              data-msg="Telefone é obrigatório"
-              placeholder="Digite o telefone aqui..."
-            />
-          </div>
+        
           <div class="form-group col-md-2 mt-3 text-center">
             <button type="submit" class="btn btn-primary btn-lg mt-2 w-100">
               Salvar
@@ -65,12 +50,11 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-light">
           <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
+            <th>Task</th>
             <th>Ação</th>
           </tr>
         </thead>
-        <tbody id="tabelaContatos">
+        <tbody id="tabela">
           <!-- EXIBIÇÃO DOS CONTATOS AQUI -->
         </tbody>
       </table>
@@ -86,26 +70,22 @@
 
     <script>
       form = document.querySelector("#formCadastro");
-      table = document.querySelector("#tabelaContatos");
+      table = document.querySelector("#tabela");
       
       form.onsubmit = (e) => {
         e.preventDefault();
         errosMsg = [];
 
-        const name = form.querySelector("#inputNome");
-        const cellPhone = form.querySelector("#inputTelefone");
+        const task = form.querySelector("#inputTask");
 
-        if (!name.value.trim()) {
-          errosMsg.push(name.dataset.msg);
-        }else if(!cellPhone.value.trim()) {
-          errosMsg.push(cellPhone.dataset.msg);
+        if (!task.value.trim()) {
+          errosMsg.push(task.dataset.msg);
         }
 
         if (!errosMsg.length > 0) {
             const tr = document.createElement('tr'); 
             tr.innerHTML =` 
-                <td>${name.value}</td>
-                <td>${cellPhone.value}</td>
+                <td>${task.value}</td>
                 <td>
                 <button	class="btn	btn-danger	btn-sm">
                 Excluir
@@ -122,8 +102,9 @@
       };
 
       table.onclick = e => {
-          let classDenger = e.target.classList.contains('btn-danger'); 
+        if(e.target.classList.contains('btn-danger')){
           e.target.closest("tr").remove(); 
+        }; 
       } 
 
     </script>
