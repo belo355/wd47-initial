@@ -84,48 +84,6 @@
       }
     </style>
 
-    <script>
-      form = document.querySelector("#formCadastro");
-      table = document.querySelector("#tabelaContatos");
-      
-      form.onsubmit = (e) => {
-        e.preventDefault();
-        errosMsg = [];
-
-        const name = form.querySelector("#inputNome");
-        const cellPhone = form.querySelector("#inputTelefone");
-
-        if (!name.value.trim()) {
-          errosMsg.push(name.dataset.msg);
-        }else if(!cellPhone.value.trim()) {
-          errosMsg.push(cellPhone.dataset.msg);
-        }
-
-        if (!errosMsg.length > 0) {
-            const tr = document.createElement('tr'); 
-            tr.innerHTML =` 
-                <td>${name.value}</td>
-                <td>${cellPhone.value}</td>
-                <td>
-                <button	class="btn	btn-danger	btn-sm">
-                Excluir
-                </button>
-                </td>
-                `
-
-            table.append(tr); 
-            form.reset(); 
-
-        }else{
-            alert(errosMsg);
-        }   
-      };
-
-      table.onclick = e => {
-          let classDenger = e.target.classList.contains('btn-danger'); 
-          e.target.closest("tr").remove(); 
-      } 
-
-    </script>
+    <script src="js/app.js" type="module"></script>
   </body>
 </html>
