@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<h1>AJAX Clássico</h1>
+
+<button id="btnCarregar">Carregar</button>
+
+<div class="conteudoCarrergado">
+  Os dados carregados serão mostrados aqui...
+</div>
+
+<script>
+
+  const btnCarregar = document.querySelector('#btnCarregar'); 
+  const divConteudo = document.querySelector('.conteudoCarrergado'); 
+
+  btnCarregar.addEventListener('click', function(){
+    const xhr = new XMLHttpRequest(); 
+    xhr.open('GET', '02-dom.html'); 
+    xhr.send(); 
+
+    xhr.addEventListener('load', function(){
+      divConteudo.innerHTML = xhr.response; 
+    })
+
+    xhr.addEventListener('error', function(){
+      aler('deu ruim'); 
+    })
+    
+  }); 
+</script>
