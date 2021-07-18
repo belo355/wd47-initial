@@ -1,4 +1,4 @@
-import {addContato} from './tableContats.js'; 
+import {addContacto} from './tableContats.js'; 
 
 const form = document.querySelector("#formCadastro");
 
@@ -16,7 +16,7 @@ form.onsubmit = (e) => {
   }
 
   if (!errosMsg.length > 0) {
-      addContato(name, cellPhone); 
+      addContacto(name, cellPhone);
       form.reset(); 
 
   }else{
