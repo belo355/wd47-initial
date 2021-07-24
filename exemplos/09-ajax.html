@@ -1,14 +1,11 @@
 <meta charset="utf-8" />
 <h1>AJAX Clássico</h1>
-
 <button id="btnCarregar">Carregar</button>
-
 <div class="conteudoCarrergado">
   Os dados carregados serão mostrados aqui...
 </div>
 
 <script>
-
   const btnCarregar = document.querySelector('#btnCarregar'); 
   const divConteudo = document.querySelector('.conteudoCarrergado'); 
 
@@ -18,12 +15,13 @@
     xhr.send(); 
 
     xhr.addEventListener('load', function(){
+      btnCarregar.disabled = false; 
+      btnCarregar.textContent = 'Carregar'; 
       divConteudo.innerHTML = xhr.response; 
     })
 
     xhr.addEventListener('error', function(){
       aler('deu ruim'); 
     })
-    
   }); 
 </script>

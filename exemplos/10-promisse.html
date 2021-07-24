@@ -1,0 +1,32 @@
+<meta charset="utf-8" />
+<h1>Ajax com fetch API</h1>
+<button id="btnCarregar">Carregar</button>
+<div class="conteudoCarrergado">
+  Os dados carregados serão mostrados aqui...
+</div>
+
+<script>
+  const btnCarregar = document.querySelector('#btnCarregar'); 
+  const divConteudo = document.querySelector('.conteudoCarrergado'); 
+
+  btnCarregar.onclick = () => {
+    btnCarregar.disabled= true; 
+    btnCarregar.textContent = 'Carregando ...'; 
+
+    fetch('http://jhonatanjacinto.dev/teste.php')
+      .then(function(response){
+        return response.text(); 
+      }) 
+      .then(function(textoCarregado) {
+        divConteudo.innerHTML = textoCarregado; 
+      })
+      .catch(function(erro){
+        alert('Deu ruim no carregamento das informações'); 
+        console.error(erro); 
+      })
+      .finally(function(){
+        btnCarregar.disabled = false; 
+        btnCarregar.textContent = 'Carregar'; 
+      })
+  }
+</script>
