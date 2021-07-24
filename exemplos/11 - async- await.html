@@ -4,19 +4,18 @@
 <div class="conteudoCarrergado">
   Os dados carregados serão mostrados aqui...
 </div>
-
 <script>
   const btnLoad = document.querySelector('#btnLoad'); 
   const divConteudo = document.querySelector('.conteudoCarrergado'); 
 
-  btnLoad.onclick = async function() {
-    
+  btnLoad.onclick = async() => {
     try{
       btnLoad.disabled= true; 
       btnLoad.textContent = 'Carregando ...'; 
 
       const response = await fetch('http://jhonatanjacinto.dev/teste.php'); 
       divConteudo.innerHTML = await response.text(); 
+      //TODO: ENTENDER PQ NAO CONSIGO COLOCAR EM APENAS 1 LINHAS 
 
     }catch(e){
       alert('deu erro no carregamento das informacoes', e)
@@ -24,6 +23,5 @@
       btnLoad.disabled = false; 
       btnLoad.textContent = 'Carregar'; 
     }
-
   }
 </script>

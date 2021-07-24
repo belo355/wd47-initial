@@ -1,15 +1,11 @@
 import { addCartao } from "./mural.js";
+import { getInstrucoes } from '../services/ceepService.js'
 
 const btn = document.querySelector("#btnAjuda");
-
-btn.addEventListener("click", function () {
-  const mensagens = [
-    "Bem vindo ao CEEP",
-    "Click em ? para obter ajuda",
-    "Click botão linhas para mudar a exibicao dos cartoes",
-  ];
-
+btn.addEventListener("click", async () => {
+  const mensagens = await getInstrucoes(); 
   for (let msg of mensagens) {
-    addCartao(msg); 
+    addCartao(msg.conteudo, msg.cor); 
   }
 });
+
