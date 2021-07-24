@@ -4,7 +4,7 @@ const mural = document.querySelector('.mural');
 const cartaoModelo = document.querySelector('#template-cartao').content.firstElementChild; 
 let numeroCartao = 0; 
 
-//TODO: TRADUZIR TODO O DESENVOLVIMENTO FEITO HOJE 
+//TODO: TRADUZIR O DESENVOLVIMENTO FEITO HOJE 
 
 window.addEventListener('load', async() => {
   const cartoes = await getCartoesServer(); 
@@ -48,11 +48,13 @@ export function toggleLayout() {
   mural.classList.toggle("mural--linha");
 }
 
-  mural.addEventListener('click', function(event) {
+  mural.addEventListener('click', function(e) {
 
     //TODO ENTENDER PQ NAO FUNCIONA DELETE
-    if (event.target.classList.contains('.opcoesDoCartao-remove')){
-       const cartao = event.target.closest('.cartao'); 
+    let isBtnExcluir = e.target.classList.contains('.opcoesDoCartao-remove'); 
+    if (isBtnExcluir){
+       const cartao = e.target.closest('.cartao'); 
+       cartao.classList.add('cartao--some'); 
        cartao.remove(); 
     }
   });

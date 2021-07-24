@@ -1,3 +1,5 @@
+import usuarioLogado from "../storage/loginUsuario.js";
+
 const CEEP_API_URL = "http://wd47-ceep.herokuapp.com";
 
 /**
@@ -17,7 +19,7 @@ export async function getInstrucoes() {
  */
 export async function saveCartoesServer(listCartoes) {
   const infoUsuario = {
-    usuario: 'edilson.silva@teste.com.br',
+    usuario: usuarioLogado,
     cartoes: listCartoes,
   };
 
@@ -48,7 +50,7 @@ export async function saveCartoesServer(listCartoes) {
  * @returns {Promisse<Array}
  */
  export async function getCartoesServer() {
-  let user = 'edilson.silva@teste.com.br'; 
+  let user = usuarioLogado;  
   const response = await fetch(CEEP_API_URL + '/get-cartoes.php?usuario=' + user);
   const dadosCartoes = await response.json(); 
   return dadosCartoes.cartoes ?? []; 

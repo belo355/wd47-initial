@@ -3,3 +3,4 @@ import './view/btnMudaLayout.js';
 import './view/mural.js'; 
 import './view/fomCartao.js'; 
 import './view/btnSync.js'; 
+import './view/btnLogout.js'; 

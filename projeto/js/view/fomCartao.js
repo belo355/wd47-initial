@@ -9,7 +9,6 @@ form.addEventListener("submit", function (event) {
 
   if (caixatexto.value.trim() === "") {
     notificar('Por favor, preencha o campo corretamente'); 
-    //TODO:entender que texto colcoar aqui
   
   } else {
     addCartao(caixatexto.value.trim());
