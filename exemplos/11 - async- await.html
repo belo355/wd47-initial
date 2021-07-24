@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<h1> AJAX fetch api + Async await</h1>
+<button id="btnLoad">Carregar</button>
+<div class="conteudoCarrergado">
+  Os dados carregados serão mostrados aqui...
+</div>
+
+<script>
+  const btnLoad = document.querySelector('#btnLoad'); 
+  const divConteudo = document.querySelector('.conteudoCarrergado'); 
+
+  btnLoad.onclick = async function() {
+    
+    try{
+      btnLoad.disabled= true; 
+      btnLoad.textContent = 'Carregando ...'; 
+
+      const response = await fetch('http://jhonatanjacinto.dev/teste.php'); 
+      divConteudo.innerHTML = await response.text(); 
+
+    }catch(e){
+      alert('deu erro no carregamento das informacoes', e)
+    }finally{
+      btnLoad.disabled = false; 
+      btnLoad.textContent = 'Carregar'; 
+    }
+
+  }
+</script>
