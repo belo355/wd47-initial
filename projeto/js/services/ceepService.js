@@ -23,25 +23,20 @@ export async function saveCartoesServer(listCartoes) {
     cartoes: listCartoes,
   };
 
-  try {
-    const response = await fetch(CEEP_API_URL + '/salvar-cartoes.php', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(infoUsuario) 
-    });
+  const response = await fetch(CEEP_API_URL + "/salvar-cartoes.php", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(infoUsuario),
+  });
 
-    const dadosRetornados = await response.json();
+  const dadosRetornados = await response.json();
 
-    if (dadosRetornados.quantidade == 1) {
-      return "Cartao salvo com sucesso!";
-    } else {
-      return dadosRetornados.quantidade + " cartões salvos com sucesso!";
-    }
-  } catch (error) {
-    console.error(error);
-    return "Erro ao enviar informacoes para o servidor!";
+  if (dadosRetornados.quantidade == 1) {
+    return "Cartao salvo com sucesso!";
+  } else {
+    return dadosRetornados.quantidade + " cartões salvos com sucesso!";
   }
 }
 
@@ -49,9 +44,11 @@ export async function saveCartoesServer(listCartoes) {
  * Retonar a lista de cartoes salvos no back
  * @returns {Promisse<Array}
  */
- export async function getCartoesServer() {
-  let user = usuarioLogado;  
-  const response = await fetch(CEEP_API_URL + '/get-cartoes.php?usuario=' + user);
-  const dadosCartoes = await response.json(); 
-  return dadosCartoes.cartoes ?? []; 
+export async function getCartoesServer() {
+  let user = usuarioLogado;
+  const response = await fetch(
+    CEEP_API_URL + "/get-cartoes.php?usuario=" + user
+  );
+  const dadosCartoes = await response.json();
+  return dadosCartoes.cartoes ?? [];
 }
